@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex, nofollow">
 <style>
   :root{
+    color-scheme:light;
     --black:#0b0b0b;
     --ink:#111;
     --muted:#555;
@@ -114,7 +115,7 @@
   /* quiz */
   .quiz{
     margin-top:30px;border:2px solid var(--green);border-radius:var(--radius);background:#fff;
-    padding:22px 14px 14px;position:relative;text-align:center;
+    padding:22px 14px 14px;position:relative;text-align:center;scroll-margin-top:64px;
   }
   .quiz .starter{
     position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;
@@ -150,7 +151,8 @@
   .quiz .back{background:none;border:0;color:var(--muted);font-size:13px;margin-top:14px;text-decoration:underline}
   .field{display:flex;flex-direction:column;gap:6px;text-align:left}
   .field label{font-size:13px;font-weight:700}
-  .field input{padding:15px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:17px;width:100%}
+  .field input{padding:15px;border:1.5px solid #d6d6d6;border-radius:10px;font:inherit;font-size:17px;width:100%;background:#fff;color:var(--ink);-webkit-appearance:none;appearance:none}
+  .field input::placeholder{color:#9a9a9a;opacity:1}
   .field input:focus{outline:none;border-color:var(--green)}
   .stack{display:grid;gap:12px;max-width:420px;margin:0 auto}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -606,7 +608,9 @@ function showStep(n){
   current = n;
   steps.forEach(s => s.hidden = +s.dataset.step !== n);
   const bar = steps[n-1].querySelector('.progress i'); if (bar) bar.style.width = (n/TOTAL*100) + '%';
-  quiz.scrollIntoView({behavior:'smooth', block:'start'});
+  // Only move the page if the card isn't already fully on screen (header is 52px + a little breathing room)
+  const r = quiz.getBoundingClientRect();
+  if (r.top < 60 || r.bottom > window.innerHeight) quiz.scrollIntoView({behavior:'smooth', block:'start'});
   const input = steps[n-1].querySelector('input:not([type=hidden])');
   if (input) setTimeout(() => input.focus({preventScroll:true}), 350);
   track('quiz_step', {step:n});
