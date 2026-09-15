@@ -1,0 +1,2 @@
+# Site root sends visitors to the closets funnel (query string is preserved).
+/  /closets  302

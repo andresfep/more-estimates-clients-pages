@@ -4,7 +4,7 @@
 # NOTE: `name` must match the Cloudflare Pages project name exactly or the deploy fails.
 name = "more-estimates-clients-pages"
 compatibility_date = "2026-09-01"
-pages_build_output_dir = "hampton-design/closets"
+pages_build_output_dir = "hampton-design"   # serves hampton-design/closets/index.html at /closets
 
 # Set in the Pages dashboard (Settings → Variables and Secrets) or with
 # `npx wrangler pages secret put LEAD_WEBHOOK_URL`:
