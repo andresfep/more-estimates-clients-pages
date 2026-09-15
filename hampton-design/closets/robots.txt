@@ -1,0 +1,3 @@
+# Paid-traffic landing page; not meant for organic indexing (matches the noindex meta tag).
+User-agent: *
+Disallow: /

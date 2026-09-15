@@ -1,13 +1,41 @@
 # More Estimates — Client Landing Pages
 
-Static, self-contained lead-gen landing pages, one folder per client and service.
+Static, self-contained lead-gen landing pages, one folder per client and service. No build step.
 
 | Client | Service | Path |
 |---|---|---|
 | Hampton Design | Custom closets (50% off installation + free design consult) | `hampton-design/closets/index.html` |
 
-## Editing a page
+## Deploying to Cloudflare Pages
 
-Each page is a single `index.html` with no build step. Client-specific values (city, phone, rating, form endpoint) live in the `CONFIG` object at the top of the `<script>` block. Leads post as JSON to `CONFIG.formEndpoint`; leave it empty during development and submissions log to the browser console.
+1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** and pick this repo.
+2. Build settings:
+   - Framework preset: **None**
+   - Build command: *(leave empty)*
+   - Build output directory: `hampton-design/closets`
+   - Root directory: `/` (default)
+   These match `wrangler.toml`, which the dashboard also reads.
+3. **Settings → Variables and Secrets** → add secret `LEAD_WEBHOOK_URL` with the GoHighLevel inbound
+   webhook (or Zapier/Make URL) that should receive each lead. Without it, leads still reach the
+   calendar but are only logged by the function.
+4. Add the custom domain (e.g. `closets.hamptondesign.com`). Ad URLs then look like
+   `https://closets.hamptondesign.com/?location=Houston&utm_source=fb`.
 
-Before launch, replace the placeholder reviews marked with `PLACEHOLDER` comments and drop the client logo and project photo into the page's `assets/` folder (see its README).
+CLI alternative: `npx wrangler pages deploy` from the repo root.
+
+### What is where
+
+- `hampton-design/closets/index.html` — the page. Client-specific values (city, phone, rating,
+  calendar URL) live in the `CONFIG` object at the top of the `<script>` block.
+- `hampton-design/closets/_headers` — cache and security headers served by Pages.
+- `hampton-design/closets/robots.txt` — blocks crawlers (paid-traffic page).
+- `hampton-design/closets/assets/` — drop `logo.png` and `closet.jpg` here (see its README).
+- `functions/api/lead.js` — Pages Function at `/api/lead`; receives the quiz payload, adds IP/geo
+  metadata, forwards to `LEAD_WEBHOOK_URL`.
+
+### Before launch
+
+- Replace the placeholder reviews marked with `PLACEHOLDER` comments.
+- Add the logo and project photo to `assets/`.
+- Fill in the real phone number and service area in `CONFIG`.
+- Point the Privacy Policy / Terms links in the footer at real pages.

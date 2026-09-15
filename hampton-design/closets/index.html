@@ -568,9 +568,10 @@ const CONFIG = {
   // GoHighLevel / LeadConnector booking calendar. Quiz answers are appended as URL params
   // (first_name, last_name, email, phone) so the booking form is prefilled.
   calendarUrl: "https://api.leadconnectorhq.com/widget/bookings/home-appointment3-020db0d5-d5fd-4c00-9912-9114b92f171d-eaaae700-a523-4aef-af06-5d402f65859f6yiyt8",
-  // Optional: also POST the lead as JSON (Zapier/Make webhook, GHL inbound webhook, etc.) so the
-  // contact exists even if the visitor never picks a time. Empty = skip.
-  formEndpoint: "",
+  // Where the completed quiz posts as JSON before the calendar opens, so the contact exists even if
+  // the visitor never picks a time. "/api/lead" is the Cloudflare Pages Function in /functions/api/lead.js,
+  // which forwards to the LEAD_WEBHOOK_URL secret. Empty = skip.
+  formEndpoint: "/api/lead",
   countdownHours: 48,                    // rolling countdown; resets per visitor
 };
 /* ===================================================================== */

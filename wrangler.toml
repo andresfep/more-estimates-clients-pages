@@ -1,0 +1,10 @@
+# Cloudflare Pages configuration.
+# Dashboard import: Framework preset "None", build command empty, output directory below.
+# CLI deploy:       npx wrangler pages deploy
+name = "hampton-design-closets"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "hampton-design/closets"
+
+# Set in the Pages dashboard (Settings → Variables and Secrets) or with
+# `npx wrangler pages secret put LEAD_WEBHOOK_URL`:
+#   LEAD_WEBHOOK_URL  – GoHighLevel inbound webhook (or Zapier/Make) that receives each lead as JSON
