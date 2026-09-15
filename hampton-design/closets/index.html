@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hampton Design | Custom Closets — 50% Off Installation + Free Design Consult</title>
-<meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions to see your custom closet price.">
+<meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions and book your free in-home estimate.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,7 @@
   button{font:inherit;cursor:pointer}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
   .center{text-align:center}
-  h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.01em}
+  h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
   h1{font-size:clamp(30px,6vw,44px);font-weight:900}
   h2{font-size:clamp(24px,4.6vw,32px);font-weight:900}
   h3{font-size:18px;font-weight:700}
@@ -49,7 +49,7 @@
   .eyebrow.green{color:var(--green-ink);background:#eafbee;border:1px solid #bfeccb}
   .eyebrow.green::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
   .eyebrow.red{color:#fff;background:var(--red)}
-  .eyebrow.ghost{color:var(--green);background:transparent;border:1px solid rgba(34,197,94,.5)}
+  .eyebrow.ghost{color:var(--green-ink);background:transparent;border:1px solid rgba(34,197,94,.5)}
   .stars{color:var(--gold);letter-spacing:1px;font-size:14px}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
@@ -58,29 +58,29 @@
   }
   .btn:hover{background:var(--green-dark)}
   .btn:active{transform:scale(.99)}
-  .btn.auto{width:auto;min-width:260px}
+  .btn:focus-visible,.opt:focus-visible,.field input:focus-visible{outline:3px solid rgba(34,197,94,.45);outline-offset:2px}
   .fine{font-size:12px;color:var(--muted)}
   .band{background:var(--black);color:#fff;padding:44px 0}
   .band .fine{color:#bdbdbd}
   section{padding:56px 0}
-  section.tight{padding:40px 0}
 
-  /* header */
-  header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-  .logo{font-weight:900;font-size:20px;letter-spacing:-.02em;text-decoration:none}
-  .logo span{font-weight:400}
-  .logo.light{color:#fff}
+  /* header — dark so the white logo reads */
+  header{background:var(--black);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#fff;font-weight:900;font-size:20px;letter-spacing:-.02em}
+  .logo img{height:34px;width:auto}
+  .logo .txt{display:none}
+  .logo.fallback img{display:none}
+  .logo.fallback .txt{display:inline}
+  .logo .txt span{font-weight:400}
   .hdr-trust{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700}
-  .hdr-trust .ok{color:var(--green-ink)}
+  .hdr-trust .ok{color:var(--green)}
   @media (max-width:520px){.hdr-trust .ok{display:none}}
 
   /* hero */
   .hero{padding:32px 0 0}
   .hero h1{margin:16px auto 20px;max-width:640px}
-  .offer{
-    background:var(--black);color:#fff;border-radius:var(--radius);overflow:hidden;text-align:center;
-  }
+  .offer{background:var(--black);color:#fff;border-radius:var(--radius);overflow:hidden;text-align:center}
   .offer .top{background:var(--red);font-size:11px;font-weight:700;letter-spacing:.14em;padding:8px 12px}
   .offer .body{padding:22px 18px 22px}
   .offer .big{font-size:clamp(26px,5.6vw,38px);font-weight:900;line-height:1.1}
@@ -107,62 +107,45 @@
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .opt{
     border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:18px 12px;font-weight:700;
-    font-size:14px;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:84px;justify-content:center;
+    font-size:15px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:8px;min-height:88px;justify-content:center;
     transition:border-color .12s,background .12s;
   }
-  .opt .ico{font-size:22px;line-height:1}
+  .opt .ico{font-size:24px;line-height:1}
   .opt:hover{border-color:var(--green)}
   .opt.selected{border-color:var(--green);background:#eafbee}
-  .opt.wide{grid-column:1/-1;background:var(--green);color:#fff;border-color:var(--green);min-height:0;padding:14px}
+  .opt.span{grid-column:1/-1;min-height:0;padding:14px;flex-direction:row}
+  .opt.wide{grid-column:1/-1;background:var(--green);color:#fff;border-color:var(--green);min-height:0;padding:16px;font-size:16px}
   .opt.wide:hover{background:var(--green-dark)}
   .quiz-foot{margin-top:16px}
   .quiz-foot .fine{display:block}
-  .quiz .back{
-    background:none;border:0;color:var(--muted);font-size:13px;margin-top:14px;text-decoration:underline;
-  }
+  .quiz .back{background:none;border:0;color:var(--muted);font-size:13px;margin-top:14px;text-decoration:underline}
   .field{display:flex;flex-direction:column;gap:6px;text-align:left}
   .field label{font-size:13px;font-weight:700}
-  .field input{
-    padding:14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:16px;width:100%;
-  }
+  .field input{padding:15px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:17px;width:100%}
   .field input:focus{outline:none;border-color:var(--green)}
-  .stack{display:grid;gap:12px}
+  .stack{display:grid;gap:12px;max-width:420px;margin:0 auto}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:420px){.two{grid-template-columns:1fr}}
   .err{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
-  .consent{font-size:11px;color:var(--muted);text-align:left;margin-top:12px;line-height:1.5}
+  .consent{font-size:11px;color:var(--muted);text-align:left;margin-top:12px;line-height:1.5;max-width:420px;margin-left:auto;margin-right:auto}
+  .quiz .btn{max-width:420px;margin-top:6px}
   [hidden]{display:none!important}
 
-  /* countdown */
-  .timer{display:flex;justify-content:center;gap:10px;margin:22px 0 16px}
-  .timer div{
-    background:#1c1c1c;border:1px solid #2c2c2c;border-radius:10px;min-width:64px;padding:12px 8px;
+  .qualified .check{
+    width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;
+    justify-content:center;font-size:30px;margin:0 auto 14px;
   }
+
+  /* countdown */
+  .timer{display:flex;justify-content:center;gap:10px;margin:22px 0 16px;font-variant-numeric:tabular-nums}
+  .timer div{background:#1c1c1c;border:1px solid #2c2c2c;border-radius:10px;min-width:64px;padding:12px 8px}
   .timer b{display:block;font-size:26px;font-weight:900;line-height:1}
   .timer small{display:block;font-size:10px;letter-spacing:.12em;margin-top:6px;color:#bdbdbd}
-
-  /* why tiles */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  @media (max-width:560px){.grid3{grid-template-columns:1fr 1fr}}
-  .tile{
-    border:1.5px solid var(--line);border-radius:10px;padding:18px 10px;font-weight:700;font-size:13px;
-    display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;text-align:center;min-height:96px;justify-content:center;
-  }
-  .tile .ico{font-size:22px}
-  .tile:hover{border-color:var(--green)}
-  .tile.selected{border-color:var(--green);background:#eafbee}
-  .tile.text{grid-column:1/-1;min-height:0;padding:14px;font-weight:500;color:var(--muted)}
-
-  /* chips */
-  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px 0 22px}
-  .chip{background:#1c1c1c;border:1px solid #2c2c2c;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700}
-  .chip::before{content:"✓ ";color:var(--green)}
 
   /* steps */
   .steps{display:grid;gap:26px;margin-top:30px}
   .step{display:flex;gap:16px;align-items:flex-start}
-  .step .num{
-    flex:0 0 40px;height:40px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;
-    justify-content:center;font-weight:900;
-  }
+  .step .num{flex:0 0 40px;height:40px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
   .step .num.ok{background:var(--green)}
   .step h3{font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .step p{color:var(--muted);font-size:14px;margin-top:4px}
@@ -174,16 +157,11 @@
   .rating-line b{font-size:22px;font-weight:900}
   .carousel{position:relative;overflow:hidden}
   .track{display:flex;transition:transform .4s ease}
-  .review{
-    flex:0 0 100%;background:#fff;border:1.5px solid var(--red);border-radius:12px;padding:22px 20px;
-  }
+  .review{flex:0 0 100%;background:#fff;border:1.5px solid var(--red);border-radius:12px;padding:22px 20px}
   .review .stars{color:var(--red)}
   .review p{margin:10px 0 14px;font-size:15px;line-height:1.55}
   .review .who{display:flex;align-items:center;justify-content:space-between;font-size:13px}
-  .review .who .av{
-    display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--black);color:#fff;align-items:center;
-    justify-content:center;font-weight:700;margin-right:10px;
-  }
+  .review .who .av{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--black);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-right:10px}
   .review .who .v{color:var(--green-ink);font-weight:700;font-size:11px;letter-spacing:.06em}
   .dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
   .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#cfcfcf;padding:0}
@@ -191,13 +169,11 @@
 
   /* about */
   .about p.lead{color:#333;font-size:15px;line-height:1.65;max-width:600px;margin:14px auto 26px}
-  .gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;border-radius:12px;overflow:hidden}
-  .gallery .ph{
-    aspect-ratio:3/4;background:linear-gradient(160deg,#f3efe8,#ddd6c8);display:flex;align-items:flex-end;padding:10px;
-    font-size:11px;color:#8a8273;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  }
-  .gallery .ph.wide{grid-column:span 2;aspect-ratio:auto}
-  .feat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .photo{border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:linear-gradient(160deg,#f3efe8,#ddd6c8);position:relative}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo .ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;font-size:11px;color:#8a8273;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .photo.loaded .ph{display:none}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;text-align:left}
   @media (max-width:480px){.feat{grid-template-columns:1fr}}
   .feat div{border:1.5px solid var(--line);border-radius:10px;padding:14px;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:flex-start}
   .stats{display:flex;justify-content:center;gap:40px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
@@ -222,8 +198,8 @@
 
   /* footer */
   footer{background:var(--black);color:#bdbdbd;padding:40px 0 30px;font-size:12px;text-align:center}
-  footer .logo{display:inline-block;background:#fff;color:var(--ink);padding:6px 12px;border-radius:6px;font-size:16px;margin-bottom:14px}
-  footer .row{display:flex;justify-content:center;gap:12px;align-items:center;margin:6px 0}
+  footer .logo{margin-bottom:14px;justify-content:center}
+  footer .row{display:flex;justify-content:center;gap:12px;align-items:center;margin:6px 0;flex-wrap:wrap}
   footer a{color:#bdbdbd}
   footer .legal{font-size:11px;color:#8a8a8a;max-width:620px;margin:16px auto 0;line-height:1.6}
 
@@ -235,18 +211,29 @@
   .sticky .fine{display:block;font-weight:700;color:var(--ink);margin-bottom:8px;font-size:12px}
   .sticky .btn{max-width:var(--max);padding:14px}
 
-  .thanks{padding:20px 0}
-  .thanks .check{
-    width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;
-    justify-content:center;font-size:30px;margin:0 auto 14px;
+  /* booking modal */
+  .modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+  .modal .card{
+    background:#fff;border-radius:16px;width:100%;max-width:640px;margin:auto;position:relative;
+    padding:26px 18px 18px;text-align:center;
   }
+  .modal .close{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:var(--soft);font-size:18px;line-height:1}
+  .modal .eyebrow{margin-bottom:10px}
+  .modal h2{font-size:clamp(22px,5vw,28px)}
+  .modal .sub{color:var(--muted);font-size:14px;margin:8px auto 16px;max-width:460px}
+  .modal iframe{width:100%;border:0;min-height:720px;border-radius:10px;background:#fff}
+  @media (max-width:520px){.modal{padding:0}.modal .card{border-radius:0;min-height:100%;padding-top:calc(26px + env(safe-area-inset-top,0px))}.modal iframe{min-height:760px}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#top">Hampton<span>Design</span></a>
+    <a class="logo" id="hdrLogo" href="#top">
+      <img src="assets/logo.png" alt="Hampton Design" onerror="this.closest('.logo').classList.add('fallback')">
+      <span class="txt">Hampton<span>Design</span></span>
+    </a>
     <div class="hdr-trust">
       <span><span class="stars">★★★★★</span> <span data-cfg="rating">4.9</span></span>
       <span class="ok">✓ Licensed &amp; Insured Closet Pros</span>
@@ -273,17 +260,18 @@
       <form class="quiz" id="quiz" novalidate>
         <span class="starter">✓ Start here — see your closet price</span>
 
-        <!-- STEP 1 -->
+        <!-- STEP 1: space -->
         <div class="qstep" data-step="1">
           <div class="step-label">Question 1 of 5 · Takes 30 seconds</div>
           <h3>Which space would you like to organize?</h3>
           <div class="progress"><i></i></div>
           <div class="grid2">
-            <button type="button" class="opt" data-field="space" data-value="Walk-In Closet"><span class="ico">👗</span>Walk-In Closet</button>
-            <button type="button" class="opt" data-field="space" data-value="Reach-In Closet"><span class="ico">🚪</span>Reach-In Closet</button>
-            <button type="button" class="opt" data-field="space" data-value="Pantry"><span class="ico">🥫</span>Pantry</button>
-            <button type="button" class="opt" data-field="space" data-value="Garage / Home Office"><span class="ico">🧰</span>Garage / Home Office</button>
-            <button type="button" class="opt wide" data-field="space" data-value="Multiple Spaces">Multiple Spaces — Organize It All</button>
+            <button type="button" class="opt" data-value="Walk-In Closet"><span class="ico">👗</span>Walk-In Closet</button>
+            <button type="button" class="opt" data-value="Reach-In Closet"><span class="ico">🚪</span>Reach-In Closet</button>
+            <button type="button" class="opt" data-value="Pantry"><span class="ico">🥫</span>Pantry</button>
+            <button type="button" class="opt" data-value="Garage"><span class="ico">🧰</span>Garage</button>
+            <button type="button" class="opt span" data-value="Home Office"><span class="ico">🖥️</span>Home Office</button>
+            <button type="button" class="opt wide" data-value="Multiple Spaces">Multiple Spaces — Organize It All</button>
           </div>
           <div class="quiz-foot">
             <span class="fine">Free, no-obligation estimate · No pressure, ever</span>
@@ -291,75 +279,74 @@
           </div>
         </div>
 
-        <!-- STEP 2 -->
+        <!-- STEP 2: zip -->
         <div class="qstep" data-step="2" hidden>
           <div class="step-label">Question 2 of 5</div>
-          <h3>What's the biggest problem you want solved?</h3>
-          <div class="progress"><i></i></div>
-          <div class="grid2">
-            <button type="button" class="opt" data-field="goal" data-value="Too Much Clutter"><span class="ico">📦</span>Too Much Clutter</button>
-            <button type="button" class="opt" data-field="goal" data-value="Need More Storage"><span class="ico">🧺</span>Need More Storage</button>
-            <button type="button" class="opt" data-field="goal" data-value="Dream-Closet Look"><span class="ico">✨</span>That Dream-Closet Look</button>
-            <button type="button" class="opt" data-field="goal" data-value="Easier Mornings"><span class="ico">⏰</span>Easier Mornings</button>
-            <button type="button" class="opt" data-field="goal" data-value="Just Moved In"><span class="ico">🏠</span>Just Moved In</button>
-            <button type="button" class="opt" data-field="goal" data-value="Getting Ready To Sell"><span class="ico">🔑</span>Getting Ready To Sell</button>
-          </div>
-          <button type="button" class="back" data-back>← Back</button>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="qstep" data-step="3" hidden>
-          <div class="step-label">Question 3 of 5</div>
-          <h3>Do you own the home?</h3>
-          <div class="progress"><i></i></div>
-          <div class="grid2">
-            <button type="button" class="opt" data-field="owner" data-value="Yes, I own it"><span class="ico">✅</span>Yes, I own it</button>
-            <button type="button" class="opt" data-field="owner" data-value="No, I rent"><span class="ico">🏢</span>No, I rent</button>
-          </div>
-          <p class="fine" style="margin-top:12px">Custom closets are permanently installed, so we can only quote homeowners or landlords.</p>
-          <button type="button" class="back" data-back>← Back</button>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="qstep" data-step="4" hidden>
-          <div class="step-label">Question 4 of 5</div>
-          <h3>When would you like your closet done?</h3>
-          <div class="progress"><i></i></div>
-          <div class="grid2">
-            <button type="button" class="opt" data-field="timeline" data-value="ASAP"><span class="ico">⚡</span>As soon as possible</button>
-            <button type="button" class="opt" data-field="timeline" data-value="1-3 months"><span class="ico">📅</span>In 1–3 months</button>
-            <button type="button" class="opt" data-field="timeline" data-value="3+ months"><span class="ico">🗓️</span>3+ months out</button>
-            <button type="button" class="opt" data-field="timeline" data-value="Just researching"><span class="ico">🔍</span>Just researching</button>
-          </div>
-          <button type="button" class="back" data-back>← Back</button>
-        </div>
-
-        <!-- STEP 5 -->
-        <div class="qstep" data-step="5" hidden>
-          <div class="step-label">Last step · Question 5 of 5</div>
-          <h3>Where should we send your closet price?</h3>
+          <h3>What's your ZIP code?</h3>
           <div class="progress"><i></i></div>
           <div class="stack">
-            <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required placeholder="Jane Smith"></div>
-            <div class="field"><label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(555) 555-0123"></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="jane@example.com"></div>
-            <div class="field"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="\d{5}" maxlength="5" placeholder="23666"></div>
+            <div class="field"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="23666"></div>
           </div>
-          <div class="err" id="err" aria-live="polite"></div>
-          <button type="submit" class="btn" id="submitBtn">Get My Closet Price →</button>
+          <div class="err" data-err></div>
+          <button type="button" class="btn" data-next>Continue →</button>
+          <p class="fine" style="margin-top:12px">We check that your home is inside our service area.</p>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 3: phone -->
+        <div class="qstep" data-step="3" hidden>
+          <div class="step-label">Question 3 of 5</div>
+          <h3>What's the best mobile number?</h3>
+          <div class="progress"><i></i></div>
+          <div class="stack">
+            <div class="field"><label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-0123"></div>
+          </div>
+          <div class="err" data-err></div>
+          <button type="button" class="btn" data-next>Continue →</button>
+          <p class="fine" style="margin-top:12px">Your designer texts to confirm your appointment.</p>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 4: email -->
+        <div class="qstep" data-step="4" hidden>
+          <div class="step-label">Question 4 of 5</div>
+          <h3>Where should we email your closet price?</h3>
+          <div class="progress"><i></i></div>
+          <div class="stack">
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com"></div>
+          </div>
+          <div class="err" data-err></div>
+          <button type="button" class="btn" data-next>Continue →</button>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 5: name -->
+        <div class="qstep" data-step="5" hidden>
+          <div class="step-label">Last step · Question 5 of 5</div>
+          <h3>Who should we prepare the estimate for?</h3>
+          <div class="progress"><i></i></div>
+          <div class="stack">
+            <div class="two">
+              <div class="field"><label for="first_name">First name</label><input id="first_name" name="first_name" autocomplete="given-name" placeholder="Jane"></div>
+              <div class="field"><label for="last_name">Last name</label><input id="last_name" name="last_name" autocomplete="family-name" placeholder="Smith"></div>
+            </div>
+          </div>
+          <div class="err" data-err></div>
+          <button type="submit" class="btn" id="submitBtn">See If I Qualify →</button>
           <p class="consent">By submitting, you agree Hampton Design may call or text you at the number provided about your project, including with automated technology. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
           <button type="button" class="back" data-back>← Back</button>
         </div>
 
-        <!-- THANK YOU -->
-        <div class="qstep thanks" data-step="6" hidden>
+        <!-- QUALIFIED (shown behind the calendar modal, and if the modal is closed) -->
+        <div class="qstep qualified" data-step="6" hidden>
           <div class="check">✓</div>
-          <h3>You're all set!</h3>
-          <p style="color:var(--muted);font-size:15px;margin-top:8px">A Hampton Design specialist will reach out shortly to lock in your <b>50% off installation</b> and schedule your <b>free design consult</b>.</p>
-          <p class="fine" style="margin-top:16px">Want to talk now? <a href="tel:" data-cfg-href="phone"><b data-cfg="phoneDisplay">(555) 555-0123</b></a></p>
+          <h3>Great news, <span data-first>you</span> — you qualify!</h3>
+          <p style="color:var(--muted);font-size:15px;margin-top:8px">Book your free in-home estimate now to redeem your <b>50% off installation</b> and <b>free design consult</b>.</p>
+          <button type="button" class="btn" id="openCal" style="margin-top:18px">Book My Free In-Home Estimate →</button>
+          <p class="fine" style="margin-top:16px">Prefer to talk? <a href="tel:" data-cfg-href="phone"><b data-cfg="phoneDisplay">(555) 555-0123</b></a></p>
         </div>
 
-        <input type="hidden" name="space"><input type="hidden" name="goal"><input type="hidden" name="owner"><input type="hidden" name="timeline">
+        <input type="hidden" name="space">
         <input type="hidden" name="offer" value="50% Off Installation + Free Design Consult">
         <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
       </form>
@@ -381,39 +368,6 @@
     </div>
   </section>
 
-  <!-- WHAT MATTERS -->
-  <section class="center">
-    <div class="wrap">
-      <span class="eyebrow ghost" style="color:var(--green-ink)">Tell us what matters</span>
-      <h2 style="margin-top:14px">What Would A Custom Closet Fix For You?</h2>
-      <p class="fine" style="margin:10px 0 24px">Tap what fits best — it helps your designer plan the right layout.</p>
-      <div class="grid3">
-        <button type="button" class="tile" data-goal="Too Much Clutter"><span class="ico">📦</span>Too Much Clutter</button>
-        <button type="button" class="tile" data-goal="Need More Storage"><span class="ico">🧺</span>Need More Storage Space</button>
-        <button type="button" class="tile" data-goal="Dream-Closet Look"><span class="ico">✨</span>Want That Dream-Closet Look</button>
-        <button type="button" class="tile" data-goal="Easier Mornings"><span class="ico">⏰</span>Make Mornings Easier</button>
-        <button type="button" class="tile" data-goal="Just Moved In"><span class="ico">🏠</span>Just Moved In</button>
-        <button type="button" class="tile" data-goal="Getting Ready To Sell"><span class="ico">🔑</span>Getting Ready To Sell</button>
-        <button type="button" class="tile text" data-goal="A bit of everything">A bit of everything — just show me my price</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINANCING BAND -->
-  <section class="band center">
-    <div class="wrap">
-      <span class="eyebrow red">✦ Special Financing Event</span>
-      <h2 style="margin-top:14px">50% Off Installation + Free Design Consult</h2>
-      <p style="font-weight:700;letter-spacing:.06em;font-size:13px;margin-top:8px">0% FLEXIBLE FINANCE OPTIONS</p>
-      <div class="chips">
-        <span class="chip">$0 Down Options</span>
-        <span class="chip">Low Monthly Payments</span>
-        <span class="chip">Custom Design &amp; Install</span>
-      </div>
-      <a class="btn auto" href="#quiz" data-go-quiz>Claim This Offer — Free Quote ↓</a>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section>
     <div class="wrap">
@@ -425,7 +379,7 @@
         </div>
         <div class="step">
           <div class="num">2</div>
-          <div><h3>Get Your Free In-Home Design Consult <span class="tag">100% FREE</span></h3><p>A friendly local designer measures your space, shows you a 3D layout, and confirms your exact price. No pressure.</p></div>
+          <div><h3>Book Your Free In-Home Design Consult <span class="tag">100% FREE</span></h3><p>Pick a time that works. A friendly local designer measures your space, shows you a 3D layout, and confirms your exact price. No pressure.</p></div>
         </div>
         <div class="step">
           <div class="num ok">✓</div>
@@ -467,14 +421,14 @@
   <!-- ABOUT -->
   <section class="about center">
     <div class="wrap">
-      <span class="eyebrow ghost" style="color:var(--green-ink)">Meet your local pro</span>
+      <span class="eyebrow ghost">Meet your local pro</span>
       <h2 style="margin-top:14px">Personally Designed. Locally Built.</h2>
       <p class="lead">Hampton Design began with a simple idea: home organization should be functional, beautiful, and affordable. Every closet starts with a free in-home consultation where a designer measures your space and builds a 3D layout with you — so you see exactly what you're getting before anything is ordered. Our systems are custom-cut for your home and installed by our own trained crews, never subcontractors.</p>
 
-      <!-- PLACEHOLDER GALLERY — swap the three .ph blocks for real project photos -->
-      <div class="gallery">
-        <div class="ph">Walk-in closet</div>
-        <div class="ph wide">Custom island &amp; drawers</div>
+      <!-- Single project photo: drop the file at assets/closet.jpg -->
+      <div class="photo" id="photo">
+        <img src="assets/closet.jpg" alt="Custom walk-in closet installed by Hampton Design" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+        <div class="ph">Project photo — assets/closet.jpg</div>
       </div>
 
       <div class="feat">
@@ -539,7 +493,10 @@
 
 <footer>
   <div class="wrap">
-    <div class="logo">Hampton<span style="font-weight:400">Design</span></div>
+    <a class="logo" href="#top">
+      <img src="assets/logo.png" alt="Hampton Design" onerror="this.closest('.logo').classList.add('fallback')">
+      <span class="txt">Hampton<span>Design</span></span>
+    </a>
     <div class="row"><span class="stars">★★★★★</span> <b style="color:#fff" data-cfg="rating">4.9</b> · Licensed &amp; Insured</div>
     <div class="row">Proudly serving <span data-cfg="serviceArea">the Hampton Roads area</span></div>
     <div class="row"><a href="tel:" data-cfg-href="phone" data-cfg="phoneDisplay">(555) 555-0123</a></div>
@@ -553,6 +510,18 @@
   <a class="btn" href="#quiz" data-go-quiz>Start My 30-Second Quote →</a>
 </div>
 
+<!-- BOOKING MODAL (GoHighLevel calendar, prefilled from the quiz) -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="card">
+    <button type="button" class="close" id="closeModal" aria-label="Close">✕</button>
+    <span class="eyebrow green">✓ You qualify</span>
+    <h2 id="modalTitle">Great, <span data-first>you</span> — you qualify!</h2>
+    <p class="sub">Book your free in-home estimate below to redeem your <b>50% off installation</b> offer. Your details are already filled in.</p>
+    <iframe id="calFrame" title="Book your free in-home estimate" scrolling="no" loading="lazy"></iframe>
+  </div>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+
 <script>
 /* ========= CONFIG — edit these, nothing else needs to change ========= */
 const CONFIG = {
@@ -562,11 +531,12 @@ const CONFIG = {
   phoneDisplay: "(555) 555-0123",
   rating: "4.9",
   years: "10",
-  // Where the lead posts. Leave empty to log to console (dev). Works with Zapier/Make webhooks,
-  // Formspree, GoHighLevel inbound webhooks, etc. Expects JSON body.
+  // GoHighLevel / LeadConnector booking calendar. Quiz answers are appended as URL params
+  // (first_name, last_name, email, phone) so the booking form is prefilled.
+  calendarUrl: "https://api.leadconnectorhq.com/widget/bookings/home-appointment3-020db0d5-d5fd-4c00-9912-9114b92f171d-eaaae700-a523-4aef-af06-5d402f65859f6yiyt8",
+  // Optional: also POST the lead as JSON (Zapier/Make webhook, GHL inbound webhook, etc.) so the
+  // contact exists even if the visitor never picks a time. Empty = skip.
   formEndpoint: "",
-  // Optional redirect after a successful submit (e.g. "/hampton-design/closets/thank-you.html"). Empty = inline thank-you.
-  redirectUrl: "",
   countdownHours: 48,                    // rolling countdown; resets per visitor
 };
 /* ===================================================================== */
@@ -589,59 +559,95 @@ const quiz = document.getElementById('quiz');
 const steps = [...quiz.querySelectorAll('.qstep')];
 const TOTAL = 5;
 let current = 1;
+const digitsOf = s => (s||'').replace(/\D/g,'');
 
 function showStep(n){
   current = n;
   steps.forEach(s => s.hidden = +s.dataset.step !== n);
   const bar = steps[n-1].querySelector('.progress i'); if (bar) bar.style.width = (n/TOTAL*100) + '%';
-  if (n <= TOTAL) quiz.scrollIntoView({behavior:'smooth', block:'start'});
+  quiz.scrollIntoView({behavior:'smooth', block:'start'});
+  const input = steps[n-1].querySelector('input:not([type=hidden])');
+  if (input) setTimeout(() => input.focus({preventScroll:true}), 350);
   track('quiz_step', {step:n});
 }
-function setField(name, value){
-  quiz.querySelector(`input[name="${name}"]`).value = value;
-  quiz.querySelectorAll(`.opt[data-field="${name}"]`).forEach(o => o.classList.toggle('selected', o.dataset.value === value));
+
+/* Per-step validation: returns an error string or '' */
+const validators = {
+  2: () => /^\d{5}$/.test(quiz.zip.value.trim()) ? '' : 'Please enter a 5-digit ZIP code.',
+  3: () => digitsOf(quiz.phone.value).length >= 10 ? '' : 'Please enter a valid 10-digit mobile number.',
+  4: () => /^\S+@\S+\.\S+$/.test(quiz.email.value.trim()) ? '' : 'Please enter a valid email address.',
+  5: () => (quiz.first_name.value.trim() && quiz.last_name.value.trim()) ? '' : 'Please enter your first and last name.',
+};
+function validate(n){
+  const msg = validators[n] ? validators[n]() : '';
+  const err = steps[n-1].querySelector('[data-err]'); if (err) err.textContent = msg;
+  return !msg;
 }
+
 quiz.addEventListener('click', e => {
   const opt = e.target.closest('.opt');
-  if (opt){ setField(opt.dataset.field, opt.dataset.value); setTimeout(() => showStep(current+1), 160); return; }
+  if (opt){
+    quiz.space.value = opt.dataset.value;
+    quiz.querySelectorAll('.opt').forEach(o => o.classList.toggle('selected', o === opt));
+    setTimeout(() => showStep(2), 160); return;
+  }
+  if (e.target.closest('[data-next]')){ if (validate(current)) showStep(current+1); return; }
   if (e.target.closest('[data-back]')) showStep(Math.max(1, current-1));
 });
+/* Enter advances single-field steps instead of submitting early */
+quiz.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.tagName === 'INPUT' && current < TOTAL){ e.preventDefault(); if (validate(current)) showStep(current+1); }
+});
+/* Light phone formatting as they type */
+quiz.phone.addEventListener('input', () => {
+  const d = digitsOf(quiz.phone.value).slice(0,10);
+  quiz.phone.value = d.length > 6 ? `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}` : d.length > 3 ? `(${d.slice(0,3)}) ${d.slice(3)}` : d;
+});
+document.querySelectorAll('[data-go-quiz]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); showStep(current); }));
 
-/* "What matters" tiles pre-fill Q2 and jump into the quiz */
-document.querySelectorAll('.tile').forEach(t => t.addEventListener('click', () => {
-  document.querySelectorAll('.tile').forEach(x => x.classList.remove('selected')); t.classList.add('selected');
-  setField('goal', t.dataset.goal);
-  const spaceChosen = quiz.querySelector('input[name="space"]').value;
-  showStep(spaceChosen ? 3 : 1);
-}));
-document.querySelectorAll('[data-go-quiz]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); showStep(current > TOTAL ? TOTAL+1 : current); }));
+/* ---- Final submit → qualify → calendar modal ---- */
+function leadData(){
+  const d = Object.fromEntries(new FormData(quiz).entries());
+  d.phone = digitsOf(d.phone); d.first_name = d.first_name.trim(); d.last_name = d.last_name.trim(); d.email = d.email.trim();
+  d.name = `${d.first_name} ${d.last_name}`; d.company = 'Hampton Design'; d.service = 'Custom Closets'; d.submitted_at = new Date().toISOString();
+  return d;
+}
+function calendarUrlFor(d){
+  const u = new URL(CONFIG.calendarUrl);
+  u.searchParams.set('first_name', d.first_name);
+  u.searchParams.set('last_name', d.last_name);
+  u.searchParams.set('email', d.email);
+  u.searchParams.set('phone', d.phone.length === 10 ? '+1' + d.phone : d.phone);
+  return u.toString();
+}
+const modal = document.getElementById('modal'), calFrame = document.getElementById('calFrame');
+function openCalendar(d){
+  const url = calendarUrlFor(d);
+  if (calFrame.src !== url) calFrame.src = url;
+  modal.hidden = false; document.body.style.overflow = 'hidden';
+  document.getElementById('sticky').hidden = true;
+  track('calendar_open', {});
+}
+function closeCalendar(){ modal.hidden = true; document.body.style.overflow = ''; }
+document.getElementById('closeModal').addEventListener('click', closeCalendar);
+modal.addEventListener('click', e => { if (e.target === modal) closeCalendar(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeCalendar(); });
+document.getElementById('openCal').addEventListener('click', () => openCalendar(leadData()));
 
-/* Submit */
 quiz.addEventListener('submit', async e => {
   e.preventDefault();
-  const err = document.getElementById('err'); err.textContent = '';
-  const data = Object.fromEntries(new FormData(quiz).entries());
-  const digits = (data.phone||'').replace(/\D/g,'');
-  if (!data.name.trim()) return err.textContent = 'Please enter your name.';
-  if (digits.length < 10) return err.textContent = 'Please enter a valid 10-digit phone number.';
-  if (!/^\S+@\S+\.\S+$/.test(data.email)) return err.textContent = 'Please enter a valid email.';
-  if (!/^\d{5}$/.test(data.zip)) return err.textContent = 'Please enter a 5-digit ZIP code.';
-  data.phone = digits; data.submitted_at = new Date().toISOString(); data.company = 'Hampton Design'; data.service = 'Custom Closets';
-
-  const btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'Sending…';
-  try{
-    if (CONFIG.formEndpoint){
-      const r = await fetch(CONFIG.formEndpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-    } else { console.log('[lead] (no formEndpoint configured)', data); }
-    track('lead_submit', {space:data.space, goal:data.goal});
-    if (CONFIG.redirectUrl) return location.href = CONFIG.redirectUrl;
-    showStep(TOTAL+1);
-    document.getElementById('sticky').hidden = true;
-  }catch(ex){
-    err.textContent = 'Something went wrong sending your request. Please call us at ' + CONFIG.phoneDisplay + '.';
-    btn.disabled = false; btn.textContent = 'Get My Closet Price →';
-  }
+  if (!validate(5)) return;
+  const d = leadData();
+  const btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'Checking…';
+  if (CONFIG.formEndpoint){
+    // fire-and-forget: the calendar is the real conversion, never block it on the webhook
+    fetch(CONFIG.formEndpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d), keepalive:true}).catch(()=>{});
+  } else { console.log('[lead] (no formEndpoint configured)', d); }
+  track('lead_submit', {space:d.space});
+  document.querySelectorAll('[data-first]').forEach(el => el.textContent = d.first_name);
+  showStep(TOTAL+1);
+  openCalendar(d);
+  btn.disabled = false; btn.textContent = 'See If I Qualify →';
 });
 
 /* ---- Countdown (rolling, per visitor) ---- */
@@ -674,12 +680,12 @@ quiz.addEventListener('submit', async e => {
 (() => {
   const sticky = document.getElementById('sticky');
   if (!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(([e]) => { if (current <= TOTAL) sticky.style.transform = e.isIntersecting ? 'translateY(110%)' : ''; }, {threshold: 0.15}).observe(quiz);
+  new IntersectionObserver(([e]) => { sticky.style.transform = e.isIntersecting ? 'translateY(110%)' : ''; }, {threshold: 0.15}).observe(quiz);
 })();
 
 /* ---- Analytics hook (GA4 / Meta pixel if present) ---- */
 function track(name, params){
-  try{ if (window.gtag) gtag('event', name, params||{}); if (window.fbq && name==='lead_submit') fbq('track','Lead'); }catch{}
+  try{ if (window.gtag) gtag('event', name, params||{}); if (window.fbq && name==='lead_submit') fbq('track','Lead'); if (window.fbq && name==='calendar_open') fbq('track','InitiateCheckout'); }catch{}
 }
 </script>
 </body>
