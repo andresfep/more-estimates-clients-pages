@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hampton Design | Custom Closets — 50% Off Installation + Free Design Consult</title>
+<meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions to see your custom closet price.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0b0b0b;
+    --ink:#111;
+    --muted:#555;
+    --line:#e6e6e6;
+    --bg:#fff;
+    --soft:#f6f6f6;
+    --green:#22c55e;
+    --green-dark:#16a34a;
+    --green-ink:#15803d;
+    --red:#e5261f;
+    --gold:#f5b301;
+    --radius:14px;
+    --max:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:Roboto,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.45;-webkit-font-smoothing:antialiased;
+    padding-bottom:84px; /* room for sticky bar */
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  button{font:inherit;cursor:pointer}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .center{text-align:center}
+  h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.01em}
+  h1{font-size:clamp(30px,6vw,44px);font-weight:900}
+  h2{font-size:clamp(24px,4.6vw,32px);font-weight:900}
+  h3{font-size:18px;font-weight:700}
+  p{margin:0}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;padding:6px 12px;border-radius:999px;
+  }
+  .eyebrow.green{color:var(--green-ink);background:#eafbee;border:1px solid #bfeccb}
+  .eyebrow.green::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
+  .eyebrow.red{color:#fff;background:var(--red)}
+  .eyebrow.ghost{color:var(--green);background:transparent;border:1px solid rgba(34,197,94,.5)}
+  .stars{color:var(--gold);letter-spacing:1px;font-size:14px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+    padding:16px 22px;border:0;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;
+    background:var(--green);color:#fff;transition:transform .08s,background .15s;
+  }
+  .btn:hover{background:var(--green-dark)}
+  .btn:active{transform:scale(.99)}
+  .btn.auto{width:auto;min-width:260px}
+  .fine{font-size:12px;color:var(--muted)}
+  .band{background:var(--black);color:#fff;padding:44px 0}
+  .band .fine{color:#bdbdbd}
+  section{padding:56px 0}
+  section.tight{padding:40px 0}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-weight:900;font-size:20px;letter-spacing:-.02em;text-decoration:none}
+  .logo span{font-weight:400}
+  .logo.light{color:#fff}
+  .hdr-trust{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700}
+  .hdr-trust .ok{color:var(--green-ink)}
+  @media (max-width:520px){.hdr-trust .ok{display:none}}
+
+  /* hero */
+  .hero{padding:32px 0 0}
+  .hero h1{margin:16px auto 20px;max-width:640px}
+  .offer{
+    background:var(--black);color:#fff;border-radius:var(--radius);overflow:hidden;text-align:center;
+  }
+  .offer .top{background:var(--red);font-size:11px;font-weight:700;letter-spacing:.14em;padding:8px 12px}
+  .offer .body{padding:22px 18px 22px}
+  .offer .big{font-size:clamp(26px,5.6vw,38px);font-weight:900;line-height:1.1}
+  .offer .pill{
+    display:inline-block;margin-top:14px;background:#fff;color:var(--ink);font-size:12px;font-weight:700;
+    letter-spacing:.06em;padding:8px 18px;border-radius:999px;
+  }
+  .offer.on-white{box-shadow:0 20px 50px rgba(0,0,0,.08)}
+
+  /* quiz */
+  .quiz{
+    margin-top:14px;border:2px solid var(--green);border-radius:var(--radius);background:#fff;
+    padding:28px 20px 20px;position:relative;text-align:center;
+  }
+  .quiz .starter{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    background:var(--green);color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;
+  }
+  .quiz .step-label{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .quiz h3{font-size:22px;font-weight:900;margin:8px 0 18px}
+  .progress{height:4px;background:var(--line);border-radius:999px;margin:0 0 18px;overflow:hidden}
+  .progress i{display:block;height:100%;background:var(--green);width:20%;transition:width .3s}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opt{
+    border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:18px 12px;font-weight:700;
+    font-size:14px;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:84px;justify-content:center;
+    transition:border-color .12s,background .12s;
+  }
+  .opt .ico{font-size:22px;line-height:1}
+  .opt:hover{border-color:var(--green)}
+  .opt.selected{border-color:var(--green);background:#eafbee}
+  .opt.wide{grid-column:1/-1;background:var(--green);color:#fff;border-color:var(--green);min-height:0;padding:14px}
+  .opt.wide:hover{background:var(--green-dark)}
+  .quiz-foot{margin-top:16px}
+  .quiz-foot .fine{display:block}
+  .quiz .back{
+    background:none;border:0;color:var(--muted);font-size:13px;margin-top:14px;text-decoration:underline;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;text-align:left}
+  .field label{font-size:13px;font-weight:700}
+  .field input{
+    padding:14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:16px;width:100%;
+  }
+  .field input:focus{outline:none;border-color:var(--green)}
+  .stack{display:grid;gap:12px}
+  .err{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
+  .consent{font-size:11px;color:var(--muted);text-align:left;margin-top:12px;line-height:1.5}
+  [hidden]{display:none!important}
+
+  /* countdown */
+  .timer{display:flex;justify-content:center;gap:10px;margin:22px 0 16px}
+  .timer div{
+    background:#1c1c1c;border:1px solid #2c2c2c;border-radius:10px;min-width:64px;padding:12px 8px;
+  }
+  .timer b{display:block;font-size:26px;font-weight:900;line-height:1}
+  .timer small{display:block;font-size:10px;letter-spacing:.12em;margin-top:6px;color:#bdbdbd}
+
+  /* why tiles */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:560px){.grid3{grid-template-columns:1fr 1fr}}
+  .tile{
+    border:1.5px solid var(--line);border-radius:10px;padding:18px 10px;font-weight:700;font-size:13px;
+    display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;text-align:center;min-height:96px;justify-content:center;
+  }
+  .tile .ico{font-size:22px}
+  .tile:hover{border-color:var(--green)}
+  .tile.selected{border-color:var(--green);background:#eafbee}
+  .tile.text{grid-column:1/-1;min-height:0;padding:14px;font-weight:500;color:var(--muted)}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px 0 22px}
+  .chip{background:#1c1c1c;border:1px solid #2c2c2c;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700}
+  .chip::before{content:"✓ ";color:var(--green)}
+
+  /* steps */
+  .steps{display:grid;gap:26px;margin-top:30px}
+  .step{display:flex;gap:16px;align-items:flex-start}
+  .step .num{
+    flex:0 0 40px;height:40px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;
+    justify-content:center;font-weight:900;
+  }
+  .step .num.ok{background:var(--green)}
+  .step h3{font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .step p{color:var(--muted);font-size:14px;margin-top:4px}
+  .tag{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green-ink);background:#eafbee;padding:3px 8px;border-radius:999px}
+
+  /* reviews */
+  .reviews{background:var(--soft)}
+  .rating-line{display:flex;justify-content:center;align-items:center;gap:8px;font-size:14px;margin:10px 0 24px}
+  .rating-line b{font-size:22px;font-weight:900}
+  .carousel{position:relative;overflow:hidden}
+  .track{display:flex;transition:transform .4s ease}
+  .review{
+    flex:0 0 100%;background:#fff;border:1.5px solid var(--red);border-radius:12px;padding:22px 20px;
+  }
+  .review .stars{color:var(--red)}
+  .review p{margin:10px 0 14px;font-size:15px;line-height:1.55}
+  .review .who{display:flex;align-items:center;justify-content:space-between;font-size:13px}
+  .review .who .av{
+    display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--black);color:#fff;align-items:center;
+    justify-content:center;font-weight:700;margin-right:10px;
+  }
+  .review .who .v{color:var(--green-ink);font-weight:700;font-size:11px;letter-spacing:.06em}
+  .dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+  .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#cfcfcf;padding:0}
+  .dots button.on{background:var(--black)}
+
+  /* about */
+  .about p.lead{color:#333;font-size:15px;line-height:1.65;max-width:600px;margin:14px auto 26px}
+  .gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;border-radius:12px;overflow:hidden}
+  .gallery .ph{
+    aspect-ratio:3/4;background:linear-gradient(160deg,#f3efe8,#ddd6c8);display:flex;align-items:flex-end;padding:10px;
+    font-size:11px;color:#8a8273;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  }
+  .gallery .ph.wide{grid-column:span 2;aspect-ratio:auto}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  @media (max-width:480px){.feat{grid-template-columns:1fr}}
+  .feat div{border:1.5px solid var(--line);border-radius:10px;padding:14px;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:flex-start}
+  .stats{display:flex;justify-content:center;gap:40px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+  .stats b{display:block;font-size:26px;font-weight:900}
+  .stats small{font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:700}
+  .awards{font-size:11px;color:var(--muted);margin-top:18px;font-weight:700}
+
+  /* faq */
+  .faq{background:var(--soft)}
+  .faq details{background:#fff;border:1.5px solid var(--line);border-radius:10px;margin-top:10px;padding:0 16px}
+  .faq summary{cursor:pointer;font-weight:700;font-size:14px;padding:16px 0;list-style:none;display:flex;gap:10px;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"▸";font-size:12px;transition:transform .15s}
+  .faq details[open] summary::before{transform:rotate(90deg)}
+  .faq details p{padding:0 0 16px 22px;font-size:14px;color:#333;line-height:1.6}
+
+  /* final cta */
+  .final .offer{max-width:440px;margin:22px auto 16px;background:#fff;color:var(--ink)}
+  .final .offer .top{background:#fff;color:var(--red);border-bottom:1px solid var(--line)}
+  .final .offer .pill{background:var(--soft)}
+  .final .btn{max-width:440px}
+
+  /* footer */
+  footer{background:var(--black);color:#bdbdbd;padding:40px 0 30px;font-size:12px;text-align:center}
+  footer .logo{display:inline-block;background:#fff;color:var(--ink);padding:6px 12px;border-radius:6px;font-size:16px;margin-bottom:14px}
+  footer .row{display:flex;justify-content:center;gap:12px;align-items:center;margin:6px 0}
+  footer a{color:#bdbdbd}
+  footer .legal{font-size:11px;color:#8a8a8a;max-width:620px;margin:16px auto 0;line-height:1.6}
+
+  /* sticky */
+  .sticky{
+    position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));text-align:center;transition:transform .25s;
+  }
+  .sticky .fine{display:block;font-weight:700;color:var(--ink);margin-bottom:8px;font-size:12px}
+  .sticky .btn{max-width:var(--max);padding:14px}
+
+  .thanks{padding:20px 0}
+  .thanks .check{
+    width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;
+    justify-content:center;font-size:30px;margin:0 auto 14px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Hampton<span>Design</span></a>
+    <div class="hdr-trust">
+      <span><span class="stars">★★★★★</span> <span data-cfg="rating">4.9</span></span>
+      <span class="ok">✓ Licensed &amp; Insured Closet Pros</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO + QUIZ -->
+  <section class="hero">
+    <div class="wrap center">
+      <span class="eyebrow green">Closet Event · <span data-cfg="city">Your Area</span></span>
+      <h1>A Beautifully Organized Closet For Less</h1>
+
+      <div class="offer">
+        <div class="top">✦ LIMITED TIME · CLOSET EVENT</div>
+        <div class="body">
+          <div class="big">50% Off Installation<br>+ Free Design Consult</div>
+          <span class="pill">0% FLEXIBLE FINANCE OPTIONS</span>
+        </div>
+      </div>
+
+      <form class="quiz" id="quiz" novalidate>
+        <span class="starter">✓ Start here — see your closet price</span>
+
+        <!-- STEP 1 -->
+        <div class="qstep" data-step="1">
+          <div class="step-label">Question 1 of 5 · Takes 30 seconds</div>
+          <h3>Which space would you like to organize?</h3>
+          <div class="progress"><i></i></div>
+          <div class="grid2">
+            <button type="button" class="opt" data-field="space" data-value="Walk-In Closet"><span class="ico">👗</span>Walk-In Closet</button>
+            <button type="button" class="opt" data-field="space" data-value="Reach-In Closet"><span class="ico">🚪</span>Reach-In Closet</button>
+            <button type="button" class="opt" data-field="space" data-value="Pantry"><span class="ico">🥫</span>Pantry</button>
+            <button type="button" class="opt" data-field="space" data-value="Garage / Home Office"><span class="ico">🧰</span>Garage / Home Office</button>
+            <button type="button" class="opt wide" data-field="space" data-value="Multiple Spaces">Multiple Spaces — Organize It All</button>
+          </div>
+          <div class="quiz-foot">
+            <span class="fine">Free, no-obligation estimate · No pressure, ever</span>
+            <span class="fine"><span class="stars">★★★★★</span> <span data-cfg="rating">4.9</span> rated · Licensed &amp; insured local pros</span>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="qstep" data-step="2" hidden>
+          <div class="step-label">Question 2 of 5</div>
+          <h3>What's the biggest problem you want solved?</h3>
+          <div class="progress"><i></i></div>
+          <div class="grid2">
+            <button type="button" class="opt" data-field="goal" data-value="Too Much Clutter"><span class="ico">📦</span>Too Much Clutter</button>
+            <button type="button" class="opt" data-field="goal" data-value="Need More Storage"><span class="ico">🧺</span>Need More Storage</button>
+            <button type="button" class="opt" data-field="goal" data-value="Dream-Closet Look"><span class="ico">✨</span>That Dream-Closet Look</button>
+            <button type="button" class="opt" data-field="goal" data-value="Easier Mornings"><span class="ico">⏰</span>Easier Mornings</button>
+            <button type="button" class="opt" data-field="goal" data-value="Just Moved In"><span class="ico">🏠</span>Just Moved In</button>
+            <button type="button" class="opt" data-field="goal" data-value="Getting Ready To Sell"><span class="ico">🔑</span>Getting Ready To Sell</button>
+          </div>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="qstep" data-step="3" hidden>
+          <div class="step-label">Question 3 of 5</div>
+          <h3>Do you own the home?</h3>
+          <div class="progress"><i></i></div>
+          <div class="grid2">
+            <button type="button" class="opt" data-field="owner" data-value="Yes, I own it"><span class="ico">✅</span>Yes, I own it</button>
+            <button type="button" class="opt" data-field="owner" data-value="No, I rent"><span class="ico">🏢</span>No, I rent</button>
+          </div>
+          <p class="fine" style="margin-top:12px">Custom closets are permanently installed, so we can only quote homeowners or landlords.</p>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="qstep" data-step="4" hidden>
+          <div class="step-label">Question 4 of 5</div>
+          <h3>When would you like your closet done?</h3>
+          <div class="progress"><i></i></div>
+          <div class="grid2">
+            <button type="button" class="opt" data-field="timeline" data-value="ASAP"><span class="ico">⚡</span>As soon as possible</button>
+            <button type="button" class="opt" data-field="timeline" data-value="1-3 months"><span class="ico">📅</span>In 1–3 months</button>
+            <button type="button" class="opt" data-field="timeline" data-value="3+ months"><span class="ico">🗓️</span>3+ months out</button>
+            <button type="button" class="opt" data-field="timeline" data-value="Just researching"><span class="ico">🔍</span>Just researching</button>
+          </div>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="qstep" data-step="5" hidden>
+          <div class="step-label">Last step · Question 5 of 5</div>
+          <h3>Where should we send your closet price?</h3>
+          <div class="progress"><i></i></div>
+          <div class="stack">
+            <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required placeholder="Jane Smith"></div>
+            <div class="field"><label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(555) 555-0123"></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="jane@example.com"></div>
+            <div class="field"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="\d{5}" maxlength="5" placeholder="23666"></div>
+          </div>
+          <div class="err" id="err" aria-live="polite"></div>
+          <button type="submit" class="btn" id="submitBtn">Get My Closet Price →</button>
+          <p class="consent">By submitting, you agree Hampton Design may call or text you at the number provided about your project, including with automated technology. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+          <button type="button" class="back" data-back>← Back</button>
+        </div>
+
+        <!-- THANK YOU -->
+        <div class="qstep thanks" data-step="6" hidden>
+          <div class="check">✓</div>
+          <h3>You're all set!</h3>
+          <p style="color:var(--muted);font-size:15px;margin-top:8px">A Hampton Design specialist will reach out shortly to lock in your <b>50% off installation</b> and schedule your <b>free design consult</b>.</p>
+          <p class="fine" style="margin-top:16px">Want to talk now? <a href="tel:" data-cfg-href="phone"><b data-cfg="phoneDisplay">(555) 555-0123</b></a></p>
+        </div>
+
+        <input type="hidden" name="space"><input type="hidden" name="goal"><input type="hidden" name="owner"><input type="hidden" name="timeline">
+        <input type="hidden" name="offer" value="50% Off Installation + Free Design Consult">
+        <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+      </form>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN BAND -->
+  <section class="band center">
+    <div class="wrap">
+      <span class="eyebrow red">⏱ Limited Time Closet Event</span>
+      <h2 style="margin-top:14px">50% Off Installation + Free Design Consult — Ends Soon</h2>
+      <div class="timer" id="timer">
+        <div><b data-t="d">01</b><small>DAYS</small></div>
+        <div><b data-t="h">23</b><small>HRS</small></div>
+        <div><b data-t="m">59</b><small>MIN</small></div>
+        <div><b data-t="s">53</b><small>SEC</small></div>
+      </div>
+      <p class="fine">This month's design schedule is filling fast in <span data-cfg="city">your area</span>.</p>
+    </div>
+  </section>
+
+  <!-- WHAT MATTERS -->
+  <section class="center">
+    <div class="wrap">
+      <span class="eyebrow ghost" style="color:var(--green-ink)">Tell us what matters</span>
+      <h2 style="margin-top:14px">What Would A Custom Closet Fix For You?</h2>
+      <p class="fine" style="margin:10px 0 24px">Tap what fits best — it helps your designer plan the right layout.</p>
+      <div class="grid3">
+        <button type="button" class="tile" data-goal="Too Much Clutter"><span class="ico">📦</span>Too Much Clutter</button>
+        <button type="button" class="tile" data-goal="Need More Storage"><span class="ico">🧺</span>Need More Storage Space</button>
+        <button type="button" class="tile" data-goal="Dream-Closet Look"><span class="ico">✨</span>Want That Dream-Closet Look</button>
+        <button type="button" class="tile" data-goal="Easier Mornings"><span class="ico">⏰</span>Make Mornings Easier</button>
+        <button type="button" class="tile" data-goal="Just Moved In"><span class="ico">🏠</span>Just Moved In</button>
+        <button type="button" class="tile" data-goal="Getting Ready To Sell"><span class="ico">🔑</span>Getting Ready To Sell</button>
+        <button type="button" class="tile text" data-goal="A bit of everything">A bit of everything — just show me my price</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCING BAND -->
+  <section class="band center">
+    <div class="wrap">
+      <span class="eyebrow red">✦ Special Financing Event</span>
+      <h2 style="margin-top:14px">50% Off Installation + Free Design Consult</h2>
+      <p style="font-weight:700;letter-spacing:.06em;font-size:13px;margin-top:8px">0% FLEXIBLE FINANCE OPTIONS</p>
+      <div class="chips">
+        <span class="chip">$0 Down Options</span>
+        <span class="chip">Low Monthly Payments</span>
+        <span class="chip">Custom Design &amp; Install</span>
+      </div>
+      <a class="btn auto" href="#quiz" data-go-quiz>Claim This Offer — Free Quote ↓</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <h2 class="center">How It Works — 3 Simple Steps To An Organized Home</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div><h3>Answer A Few Quick Questions</h3><p>Tell us about your space — takes about 30 seconds, no obligation.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div><h3>Get Your Free In-Home Design Consult <span class="tag">100% FREE</span></h3><p>A friendly local designer measures your space, shows you a 3D layout, and confirms your exact price. No pressure.</p></div>
+        </div>
+        <div class="step">
+          <div class="num ok">✓</div>
+          <div><h3>Enjoy Your Custom Closet</h3><p>Professional installation by trained local crews — with 50% off installation locked in. A place for everything from day one.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews center">
+    <div class="wrap">
+      <h2>Homeowners Love Their New Closets</h2>
+      <div class="rating-line"><b data-cfg="rating">4.9</b> <span class="stars">★★★★★</span> <span class="fine">from local homeowners</span></div>
+      <div class="carousel" id="carousel">
+        <div class="track" id="track">
+          <!-- PLACEHOLDER REVIEWS — replace with real, verifiable customer reviews before launch -->
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"Our walk-in went from a pile of shoes to something that looks like a boutique. The designer listened, the install crew was fast and clean, and it came in right at the quoted price."</p>
+            <div class="who"><span><span class="av">M</span>Melissa R.</span><span class="v">✓ VERIFIED</span></div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"We did the pantry and the reach-in closets in both kids' rooms. Everything finally has a place. Getting the design consult for free made the decision easy."</p>
+            <div class="who"><span><span class="av">D</span>David &amp; Karen T.</span><span class="v">✓ VERIFIED</span></div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"No hard sell at all. They measured, showed us the 3D layout on the spot, and the install took one day. Mornings are so much easier now."</p>
+            <div class="who"><span><span class="av">J</span>Jasmine W.</span><span class="v">✓ VERIFIED</span></div>
+          </div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about center">
+    <div class="wrap">
+      <span class="eyebrow ghost" style="color:var(--green-ink)">Meet your local pro</span>
+      <h2 style="margin-top:14px">Personally Designed. Locally Built.</h2>
+      <p class="lead">Hampton Design began with a simple idea: home organization should be functional, beautiful, and affordable. Every closet starts with a free in-home consultation where a designer measures your space and builds a 3D layout with you — so you see exactly what you're getting before anything is ordered. Our systems are custom-cut for your home and installed by our own trained crews, never subcontractors.</p>
+
+      <!-- PLACEHOLDER GALLERY — swap the three .ph blocks for real project photos -->
+      <div class="gallery">
+        <div class="ph">Walk-in closet</div>
+        <div class="ph wide">Custom island &amp; drawers</div>
+      </div>
+
+      <div class="feat">
+        <div>📐 <span>Custom-Designed For Your Exact Space</span></div>
+        <div>🖥️ <span>Free 3D Design Consultation</span></div>
+        <div>🛡️ <span>Manufacturer-Backed Warranty</span></div>
+        <div>🔧 <span>Our Own Installers, Never Subcontractors</span></div>
+      </div>
+
+      <div class="stats">
+        <div><b>★ <span data-cfg="rating">4.9</span></b><small>Customer Rating</small></div>
+        <div><b><span data-cfg="years">10</span>+</b><small>Years In Business</small></div>
+      </div>
+      <p class="awards">Licensed &amp; Insured · Locally Owned &amp; Operated · Free In-Home Consultations</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="center">Common Questions</h2>
+      <details>
+        <summary>How much does a custom closet cost?</summary>
+        <p>It depends on the size of your space, the materials, and the features you choose — drawers, islands, lighting, and so on. A reach-in closet costs far less than a full walk-in. Your designer confirms an exact, all-in price during your free in-home consult, and with this event you'll get 50% off installation on top of it.</p>
+      </details>
+      <details>
+        <summary>Am I signing up for a pitch?</summary>
+        <p>No. The consult is a working design session: your designer measures, listens to how you use the space, and shows you a 3D layout with pricing. There's no obligation and no pressure to decide on the spot.</p>
+      </details>
+      <details>
+        <summary>Can I start with just one closet?</summary>
+        <p>Absolutely. Many homeowners start with a single closet or pantry and add more later. The 50% off installation offer applies to any qualifying project, large or small.</p>
+      </details>
+      <details>
+        <summary>How long does installation take?</summary>
+        <p>Most single closets are installed in one day. Larger walk-ins or multiple rooms may take two. Your designer gives you a firm schedule before anything is ordered.</p>
+      </details>
+      <details>
+        <summary>Is financing really 0%?</summary>
+        <p>Yes — qualified homeowners can choose 0% APR promotional financing with $0 down options and low monthly payments. Financing is subject to credit approval; your designer will walk you through the plans available.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="band final center">
+    <div class="wrap">
+      <h2>Ready For Your Closet Price?</h2>
+      <div class="offer on-white">
+        <div class="top">✦ LIMITED TIME · CLOSET EVENT</div>
+        <div class="body">
+          <div class="big">50% Off Installation<br>+ Free Design Consult</div>
+          <span class="pill">0% FLEXIBLE FINANCE OPTIONS</span>
+        </div>
+      </div>
+      <a class="btn" href="#quiz" data-go-quiz>Start My 30-Second Quote →</a>
+      <p class="fine" style="margin-top:12px"><span class="stars">★★★★★</span> <span data-cfg="rating">4.9</span> · Licensed &amp; Insured · Free, no-pressure assessment</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Hampton<span style="font-weight:400">Design</span></div>
+    <div class="row"><span class="stars">★★★★★</span> <b style="color:#fff" data-cfg="rating">4.9</b> · Licensed &amp; Insured</div>
+    <div class="row">Proudly serving <span data-cfg="serviceArea">the Hampton Roads area</span></div>
+    <div class="row"><a href="tel:" data-cfg-href="phone" data-cfg="phoneDisplay">(555) 555-0123</a></div>
+    <div class="row"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></div>
+    <p class="legal">*50% off installation and free in-home design consultation valid with the purchase of a qualifying Hampton Design custom closet system. Offer valid for a limited time and cannot be combined with other offers. Financing subject to credit approval; 0% APR promotional terms available to qualified buyers. Offer not available in all areas. Reviews shown are representative. © <span id="year">2026</span> Hampton Design. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <span class="fine">⏱ 50% off installation + free design consult — see your price</span>
+  <a class="btn" href="#quiz" data-go-quiz>Start My 30-Second Quote →</a>
+</div>
+
+<script>
+/* ========= CONFIG — edit these, nothing else needs to change ========= */
+const CONFIG = {
+  city: "Hampton Roads",                 // shown in the event badge + countdown line
+  serviceArea: "Hampton Roads, VA and surrounding areas",
+  phone: "+15555550123",                 // tel: link
+  phoneDisplay: "(555) 555-0123",
+  rating: "4.9",
+  years: "10",
+  // Where the lead posts. Leave empty to log to console (dev). Works with Zapier/Make webhooks,
+  // Formspree, GoHighLevel inbound webhooks, etc. Expects JSON body.
+  formEndpoint: "",
+  // Optional redirect after a successful submit (e.g. "/hampton-design/closets/thank-you.html"). Empty = inline thank-you.
+  redirectUrl: "",
+  countdownHours: 48,                    // rolling countdown; resets per visitor
+};
+/* ===================================================================== */
+
+document.querySelectorAll('[data-cfg]').forEach(el => { const k = el.dataset.cfg; if (CONFIG[k] != null) el.textContent = CONFIG[k]; });
+document.querySelectorAll('[data-cfg-href]').forEach(el => { el.href = 'tel:' + CONFIG[el.dataset.cfgHref]; });
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---- UTM / click-id capture ---- */
+(() => {
+  const p = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(k => {
+    const el = document.querySelector(`input[name="${k}"]`); if (el && p.get(k)) el.value = p.get(k);
+  });
+  document.querySelector('input[name="source_page"]').value = location.href;
+})();
+
+/* ---- Quiz ---- */
+const quiz = document.getElementById('quiz');
+const steps = [...quiz.querySelectorAll('.qstep')];
+const TOTAL = 5;
+let current = 1;
+
+function showStep(n){
+  current = n;
+  steps.forEach(s => s.hidden = +s.dataset.step !== n);
+  const bar = steps[n-1].querySelector('.progress i'); if (bar) bar.style.width = (n/TOTAL*100) + '%';
+  if (n <= TOTAL) quiz.scrollIntoView({behavior:'smooth', block:'start'});
+  track('quiz_step', {step:n});
+}
+function setField(name, value){
+  quiz.querySelector(`input[name="${name}"]`).value = value;
+  quiz.querySelectorAll(`.opt[data-field="${name}"]`).forEach(o => o.classList.toggle('selected', o.dataset.value === value));
+}
+quiz.addEventListener('click', e => {
+  const opt = e.target.closest('.opt');
+  if (opt){ setField(opt.dataset.field, opt.dataset.value); setTimeout(() => showStep(current+1), 160); return; }
+  if (e.target.closest('[data-back]')) showStep(Math.max(1, current-1));
+});
+
+/* "What matters" tiles pre-fill Q2 and jump into the quiz */
+document.querySelectorAll('.tile').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tile').forEach(x => x.classList.remove('selected')); t.classList.add('selected');
+  setField('goal', t.dataset.goal);
+  const spaceChosen = quiz.querySelector('input[name="space"]').value;
+  showStep(spaceChosen ? 3 : 1);
+}));
+document.querySelectorAll('[data-go-quiz]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); showStep(current > TOTAL ? TOTAL+1 : current); }));
+
+/* Submit */
+quiz.addEventListener('submit', async e => {
+  e.preventDefault();
+  const err = document.getElementById('err'); err.textContent = '';
+  const data = Object.fromEntries(new FormData(quiz).entries());
+  const digits = (data.phone||'').replace(/\D/g,'');
+  if (!data.name.trim()) return err.textContent = 'Please enter your name.';
+  if (digits.length < 10) return err.textContent = 'Please enter a valid 10-digit phone number.';
+  if (!/^\S+@\S+\.\S+$/.test(data.email)) return err.textContent = 'Please enter a valid email.';
+  if (!/^\d{5}$/.test(data.zip)) return err.textContent = 'Please enter a 5-digit ZIP code.';
+  data.phone = digits; data.submitted_at = new Date().toISOString(); data.company = 'Hampton Design'; data.service = 'Custom Closets';
+
+  const btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    if (CONFIG.formEndpoint){
+      const r = await fetch(CONFIG.formEndpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+    } else { console.log('[lead] (no formEndpoint configured)', data); }
+    track('lead_submit', {space:data.space, goal:data.goal});
+    if (CONFIG.redirectUrl) return location.href = CONFIG.redirectUrl;
+    showStep(TOTAL+1);
+    document.getElementById('sticky').hidden = true;
+  }catch(ex){
+    err.textContent = 'Something went wrong sending your request. Please call us at ' + CONFIG.phoneDisplay + '.';
+    btn.disabled = false; btn.textContent = 'Get My Closet Price →';
+  }
+});
+
+/* ---- Countdown (rolling, per visitor) ---- */
+(() => {
+  const KEY = 'hd_closet_event_end'; let end;
+  try{ end = +localStorage.getItem(KEY); if (!end || end < Date.now()){ end = Date.now() + CONFIG.countdownHours*3600e3; localStorage.setItem(KEY, end); } }
+  catch{ end = Date.now() + CONFIG.countdownHours*3600e3; }
+  const el = document.getElementById('timer'); const pad = n => String(n).padStart(2,'0');
+  const tick = () => {
+    let s = Math.max(0, Math.floor((end - Date.now())/1000));
+    const d = Math.floor(s/86400); s%=86400; const h = Math.floor(s/3600); s%=3600; const m = Math.floor(s/60); s%=60;
+    el.querySelector('[data-t=d]').textContent = pad(d); el.querySelector('[data-t=h]').textContent = pad(h);
+    el.querySelector('[data-t=m]').textContent = pad(m); el.querySelector('[data-t=s]').textContent = pad(s);
+  };
+  tick(); setInterval(tick, 1000);
+})();
+
+/* ---- Reviews carousel ---- */
+(() => {
+  const track = document.getElementById('track'), dots = document.getElementById('dots');
+  const n = track.children.length; let i = 0, timer;
+  for (let k=0;k<n;k++){ const b = document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Review '+(k+1)); b.addEventListener('click', () => go(k, true)); dots.appendChild(b); }
+  function go(k, manual){ i = (k+n)%n; track.style.transform = `translateX(-${i*100}%)`; [...dots.children].forEach((d,j)=>d.classList.toggle('on', j===i)); if (manual){ clearInterval(timer); timer = setInterval(()=>go(i+1), 6000); } }
+  go(0); timer = setInterval(()=>go(i+1), 6000);
+  let x0=null; track.addEventListener('touchstart', e=>x0=e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) go(i+(dx<0?1:-1), true); x0=null; });
+})();
+
+/* ---- Hide sticky bar while the quiz itself is on screen ---- */
+(() => {
+  const sticky = document.getElementById('sticky');
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(([e]) => { if (current <= TOTAL) sticky.style.transform = e.isIntersecting ? 'translateY(110%)' : ''; }, {threshold: 0.15}).observe(quiz);
+})();
+
+/* ---- Analytics hook (GA4 / Meta pixel if present) ---- */
+function track(name, params){
+  try{ if (window.gtag) gtag('event', name, params||{}); if (window.fbq && name==='lead_submit') fbq('track','Lead'); }catch{}
+}
+</script>
+</body>
+</html>
