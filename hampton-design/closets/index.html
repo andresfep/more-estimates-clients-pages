@@ -6,6 +6,24 @@
 <title>Hampton Design | Save Hundreds On Your Dream Custom Closet</title>
 <meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions and book your free in-home estimate.">
 <meta name="robots" content="noindex, nofollow">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+window.META_PIXEL_ID='911054096515670';
+fbq('init', window.META_PIXEL_ID);
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
   :root{
     color-scheme:light;
@@ -741,6 +759,7 @@ quiz.addEventListener('submit', async e => {
     // optional secondary webhook via the Pages Function; never blocks the calendar
     fetch(CONFIG.formEndpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d), keepalive:true}).catch(()=>{});
   } else { console.log('[lead] (no formEndpoint configured)', d); }
+  fireMetaLead(d);
   track('lead_submit', {space:d.space});
   document.querySelectorAll('[data-first]').forEach(el => el.textContent = d.first_name);
   showStep(TOTAL+1);
@@ -782,9 +801,28 @@ idle(() => {
   new IntersectionObserver(([e]) => sticky.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.bottom < 0), {threshold: 0}).observe(hero);
 })();
 
-/* ---- Analytics hook (GA4 / Meta pixel if present) ---- */
+/* ---- Meta Pixel: Lead fires once, only after all 5 steps are complete ---- */
+let metaLeadSent = false;
+function fireMetaLead(d){
+  if (metaLeadSent || !window.fbq) return; metaLeadSent = true;
+  try{
+    // Advanced matching: re-init with the visitor's details (the pixel hashes them client-side) so Meta can attribute the lead.
+    fbq('init', window.META_PIXEL_ID, { em: d.email.toLowerCase(), ph: d.phone.length === 10 ? '1' + d.phone : d.phone, fn: d.first_name.toLowerCase(), ln: d.last_name.toLowerCase(), zp: d.zip, country: 'us' });
+    const eventID = (crypto.randomUUID ? crypto.randomUUID() : 'lead-' + Date.now());
+    d.meta_event_id = eventID; // travels with the lead so a server-side (CAPI) event can dedupe against this one
+    fbq('track', 'Lead', { content_name: 'Custom Closet Quote', content_category: d.space, location: d.location, currency: 'USD' }, { eventID });
+  }catch{}
+}
+
+/* ---- Analytics hook (GA4 + Meta custom events) ---- */
 function track(name, params){
-  try{ if (window.gtag) gtag('event', name, params||{}); if (window.fbq && name==='lead_submit') fbq('track','Lead'); if (window.fbq && name==='calendar_open') fbq('track','InitiateCheckout'); }catch{}
+  try{
+    if (window.gtag) gtag('event', name, params||{});
+    if (window.fbq){
+      if (name === 'quiz_step' && params && params.step === 2) fbq('trackCustom', 'QuizStart');
+      if (name === 'calendar_open') fbq('trackCustom', 'CalendarOpened');
+    }
+  }catch{}
 }
 </script>
 </body>
