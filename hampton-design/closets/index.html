@@ -6,7 +6,7 @@
 <title>Hampton Design | Save Hundreds On Your Dream Custom Closet</title>
 <meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions and book your free in-home estimate.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="page-version" content="2026-09-20.3">
+<meta name="page-version" content="2026-09-20.4">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -547,7 +547,7 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
     <div class="row">Proudly serving <span data-cfg="serviceArea">the Hampton Roads area</span></div>
     <div class="row"><a href="tel:" data-cfg-href="phone" data-cfg="phoneDisplay">(555) 555-0123</a></div>
     <div class="row"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></div>
-    <p class="legal">*50% off installation and free in-home design consultation valid with the purchase of a qualifying Hampton Design custom closet system. Offer valid for a limited time and cannot be combined with other offers. Offer not available in all areas. Reviews shown are representative. © <span id="year">2026</span> Hampton Design. All rights reserved. <span style="opacity:.5">Build 2026-09-20.3</span></p>
+    <p class="legal">*50% off installation and free in-home design consultation valid with the purchase of a qualifying Hampton Design custom closet system. Offer valid for a limited time and cannot be combined with other offers. Offer not available in all areas. Reviews shown are representative. © <span id="year">2026</span> Hampton Design. All rights reserved. <span style="opacity:.5">Build 2026-09-20.4</span></p>
   </div>
 </footer>
 
@@ -594,7 +594,6 @@ const CONFIG = {
     locationId: "Rr8wLKn0F1a95fZsBnRQ",
     formId: "quote form",                // must stay exactly this
     // Custom field ID behind {{contact.what_is_the_scope_of_this_closet_project}}; receives the chosen space.
-    // (The space is also written into calendar_notes as a backup.)
     scopeFieldId: "tJeXsozNRqlH8QQrJw2F",
   },
 };
@@ -689,15 +688,14 @@ function postTrackingEvent(trackingPayload, options = {}){
 function sendToGhl(d){
   const g = CONFIG.ghl; if (!g || !g.trackingId || !g.locationId) return;
   const phone = d.phone.length === 10 ? '+1' + d.phone : d.phone;
-  const notes = `Space: ${d.space} · ZIP: ${d.zip} · Location: ${d.location} · Offer: ${d.offer}`;
   const customFields = {};
   if (g.scopeFieldId) customFields[g.scopeFieldId] = { value: d.space, label: 'What is the scope of this closet project?' };
   postTrackingEvent({
     type: 'external_form_submission',
     timestamp: Date.now(),
     formId: g.formId || 'quote form',
-    formData: { full_name: d.full_name, phone, email: d.email, postal_code: d.zip, calendar_notes: notes },
-    formLabels: { full_name: 'Full Name', phone: 'Phone', email: 'Email', postal_code: 'ZIP Code', calendar_notes: 'Message' },
+    formData: { full_name: d.full_name, phone, email: d.email, postal_code: d.zip },
+    formLabels: { full_name: 'Full Name', phone: 'Phone', email: 'Email', postal_code: 'ZIP Code' },
     url: location.href, title: document.title, path: location.pathname, userAgent: navigator.userAgent,
     trackingId: g.trackingId, locationId: g.locationId,
     sessionId: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)),
