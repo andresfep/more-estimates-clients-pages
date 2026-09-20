@@ -38,8 +38,6 @@ CLI alternative: `npx wrangler pages deploy` from the repo root.
 
 ### Before launch
 
-- Paste the custom field ID for `{{contact.what_is_the_scope_of_this_closet_project}}` into `CONFIG.ghl.scopeFieldId`
-  so the chosen space lands in that field (it is also written to the appointment notes).
 
 - Replace the placeholder reviews marked with `PLACEHOLDER` comments.
 - Add the logo and project photo to `assets/`.

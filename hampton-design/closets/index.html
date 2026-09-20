@@ -173,8 +173,6 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
   .field input::placeholder{color:#9a9a9a;opacity:1}
   .field input:focus{outline:none;border-color:var(--green)}
   .stack{display:grid;gap:12px;max-width:420px;margin:0 auto}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media (max-width:420px){.two{grid-template-columns:1fr}}
   .err{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
   .consent{font-size:11px;color:var(--muted);text-align:left;margin-top:12px;line-height:1.5;max-width:420px;margin-left:auto;margin-right:auto}
   .quiz .btn{max-width:420px;margin-top:6px}
@@ -368,13 +366,10 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
         <!-- STEP 5: name -->
         <div class="qstep" data-step="5" hidden>
           <div class="step-label">Last step · Question 5 of 5</div>
-          <h3>Who should we prepare the estimate for?</h3>
+          <h3>What is your full name?</h3>
           <div class="progress"><i></i></div>
           <div class="stack">
-            <div class="two">
-              <div class="field"><label for="first_name">First name</label><input id="first_name" name="first_name" autocomplete="given-name" placeholder="Jane"></div>
-              <div class="field"><label for="last_name">Last name</label><input id="last_name" name="last_name" autocomplete="family-name" placeholder="Smith"></div>
-            </div>
+            <div class="field"><label for="full_name">First and last name</label><input id="full_name" name="full_name" autocomplete="name" placeholder="Jane Smith"></div>
           </div>
           <div class="err" data-err></div>
           <button type="submit" class="btn" id="submitBtn">See If I Qualify →</button>
@@ -597,10 +592,9 @@ const CONFIG = {
     trackingId: "tk_11281d909f7149a484c4bcb7eb165d28",
     locationId: "Rr8wLKn0F1a95fZsBnRQ",
     formId: "quote form",                // must stay exactly this
-    // Custom field ID (Settings → Custom Fields → the field behind
-    // {{contact.what_is_the_scope_of_this_closet_project}}). Paste the alphanumeric ID, not the key.
-    // Until it is set, the chosen space is still sent in calendar_notes so it is never lost.
-    scopeFieldId: "",
+    // Custom field ID behind {{contact.what_is_the_scope_of_this_closet_project}}; receives the chosen space.
+    // (The space is also written into calendar_notes as a backup.)
+    scopeFieldId: "tJeXsozNRqlH8QQrJw2F",
   },
 };
 /* ===================================================================== */
@@ -650,7 +644,7 @@ const validators = {
   2: () => /^\d{5}$/.test(quiz.zip.value.trim()) ? '' : 'Please enter a 5-digit ZIP code.',
   3: () => digitsOf(quiz.phone.value).length >= 10 ? '' : 'Please enter a valid 10-digit mobile number.',
   4: () => /^\S+@\S+\.\S+$/.test(quiz.email.value.trim()) ? '' : 'Please enter a valid email address.',
-  5: () => (quiz.first_name.value.trim() && quiz.last_name.value.trim()) ? '' : 'Please enter your first and last name.',
+  5: () => quiz.full_name.value.trim().split(/\s+/).length >= 2 ? '' : 'Please enter both your first and last name.',
 };
 function validate(n){
   const msg = validators[n] ? validators[n]() : '';
@@ -701,8 +695,8 @@ function sendToGhl(d){
     type: 'external_form_submission',
     timestamp: Date.now(),
     formId: g.formId || 'quote form',
-    formData: { first_name: d.first_name, last_name: d.last_name, phone, email: d.email, postal_code: d.zip, calendar_notes: notes },
-    formLabels: { first_name: 'First Name', last_name: 'Last Name', phone: 'Phone', email: 'Email', postal_code: 'ZIP Code', calendar_notes: 'Message' },
+    formData: { full_name: d.full_name, phone, email: d.email, postal_code: d.zip, calendar_notes: notes },
+    formLabels: { full_name: 'Full Name', phone: 'Phone', email: 'Email', postal_code: 'ZIP Code', calendar_notes: 'Message' },
     url: location.href, title: document.title, path: location.pathname, userAgent: navigator.userAgent,
     trackingId: g.trackingId, locationId: g.locationId,
     sessionId: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)),
@@ -717,8 +711,10 @@ function sendToGhl(d){
 /* ---- Final submit → qualify → calendar modal ---- */
 function leadData(){
   const d = Object.fromEntries(new FormData(quiz).entries());
-  d.phone = digitsOf(d.phone); d.first_name = d.first_name.trim(); d.last_name = d.last_name.trim(); d.email = d.email.trim();
-  d.name = `${d.first_name} ${d.last_name}`; d.company = 'Hampton Design'; d.service = 'Custom Closets'; d.submitted_at = new Date().toISOString();
+  d.phone = digitsOf(d.phone); d.email = d.email.trim();
+  d.full_name = d.full_name.trim().replace(/\s+/g, ' ');
+  const parts = d.full_name.split(' '); d.first_name = parts[0]; d.last_name = parts.slice(1).join(' ');
+  d.name = d.full_name; d.company = 'Hampton Design'; d.service = 'Custom Closets'; d.submitted_at = new Date().toISOString();
   return d;
 }
 function calendarUrlFor(d){
