@@ -1,0 +1,5 @@
+# Fallback used ONLY if Cloudflare's build output directory is set to hampton-design/closets
+# (the old layout). Serves the page and its assets at /closets anyway, so the URL works either way.
+/closets          /index.html   200
+/closets/         /index.html   200
+/closets/assets/* /assets/:splat 200
