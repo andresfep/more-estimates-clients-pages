@@ -18,8 +18,8 @@ Static, self-contained lead-gen landing pages, one folder per client and service
 3. **Settings → Variables and Secrets** → add secret `LEAD_WEBHOOK_URL` with the GoHighLevel inbound
    webhook (or Zapier/Make URL) that should receive each lead. Without it, leads still reach the
    calendar but are only logged by the function.
-4. Custom domain: `hamptondesign.moreestimatespro.site`. Ad URLs look like
-   `https://hamptondesign.moreestimatespro.site/closets?location=Houston&utm_source=fb`.
+4. Custom domain: `hamptondesign.moreestimatesco.site`. Ad URLs look like
+   `https://hamptondesign.moreestimatesco.site/closets?location=Houston&utm_source=fb`.
 
 CLI alternative: `npx wrangler pages deploy` from the repo root.
 
