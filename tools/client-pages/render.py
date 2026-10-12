@@ -115,7 +115,8 @@ CLIENTS = [
        EXTRA_CSS='  @media (max-width:520px){.offer .big{font-size:clamp(22px,6vw,30px)}.opt{font-size:13px}.opt.wide{font-size:14px}}\n'),
   dict(slug='sterling-closets', NAME='Sterling Closets', LOGO_BOLD='Sterling', LOGO_LIGHT='Closets', niche=CLOSET,
        OFFER='50% Off Installation + Free Design Consult', OFFER_BIG='<em>50% Off</em> Installation<br>+ Free Design Consult', OFFER_LOWER='50% off installation plus a free design consult',
-       TRACKING_ID='tk_eaada1a0cd6b457cb50f322bf34b3ad1', LOCATION_ID='8FJDGLr4259P8SKdrcX0'),
+       TRACKING_ID='tk_eaada1a0cd6b457cb50f322bf34b3ad1', LOCATION_ID='8FJDGLr4259P8SKdrcX0',
+       CALENDAR_URL='https://api.leadconnectorhq.com/widget/booking/xQXe8M5ie5g0Yv1i6pk8'),
   dict(slug='nj-doors-closets', NAME='NJ Doors & Closets', LOGO_BOLD='NJ Doors', LOGO_LIGHT='& Closets', niche=CLOSET,
        OFFER='50% Off Installation + Free Design Consult', OFFER_BIG='<em>50% Off</em> Installation<br>+ Free Design Consult', OFFER_LOWER='50% off installation plus a free design consult',
        TRACKING_ID='tk_dfc961022fbd48a1a7fac22cb6e3cdf2', LOCATION_ID='o48OIwcn2U62znaVMvQC'),
@@ -133,7 +134,7 @@ def render(c):
   v['LOGO_BOLD'] = html.escape(c['LOGO_BOLD'], quote=False); v['LOGO_LIGHT'] = html.escape(c['LOGO_LIGHT'], quote=False)
   v['OFFER'] = html.escape(c['OFFER'], quote=False)
   v['SLUG'] = c['slug'].replace('-','_'); v['BUILD'] = BUILD; v['CITY'] = ''; v['SERVICE_AREA'] = 'homeowners across our service area'
-  v['CALENDAR_URL'] = ''; v['SCOPE_FIELD_ID'] = ''; v['EXTRA_CSS'] = c.get('EXTRA_CSS','')
+  v['CALENDAR_URL'] = c.get('CALENDAR_URL',''); v['SCOPE_FIELD_ID'] = ''; v['EXTRA_CSS'] = c.get('EXTRA_CSS','')
   for k in ('ABOUT','META_DESC','FAQ'):
     v[k] = v[k].replace('{NAME}', name_html).replace('{OFFER_LOWER}', v['OFFER_LOWER'])
   out = T
