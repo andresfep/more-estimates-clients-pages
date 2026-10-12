@@ -114,7 +114,7 @@ CLIENTS = [
        TRACKING_ID='tk_ca25aae4ac8a48c39294816ed00bb6ee', LOCATION_ID='M3pAlUWTMMVdaLtYrZPr',
        EXTRA_CSS='  @media (max-width:520px){.offer .big{font-size:clamp(22px,6vw,30px)}.opt{font-size:13px}.opt.wide{font-size:14px}}\n'),
   dict(slug='sterling-closets', NAME='Sterling Closets', LOGO_BOLD='Sterling', LOGO_LIGHT='Closets', niche=CLOSET,
-       OFFER='50% Off + Free Design Consult', OFFER_BIG='<em>50% Off</em><br>+ Free Design Consult', OFFER_LOWER='50% off plus a free design consult',
+       OFFER='50% Off Installation + Free Design Consult', OFFER_BIG='<em>50% Off</em> Installation<br>+ Free Design Consult', OFFER_LOWER='50% off installation plus a free design consult',
        TRACKING_ID='tk_eaada1a0cd6b457cb50f322bf34b3ad1', LOCATION_ID='8FJDGLr4259P8SKdrcX0'),
   dict(slug='nj-doors-closets', NAME='NJ Doors & Closets', LOGO_BOLD='NJ Doors', LOGO_LIGHT='& Closets', niche=CLOSET,
        OFFER='50% Off Installation + Free Design Consult', OFFER_BIG='<em>50% Off</em> Installation<br>+ Free Design Consult', OFFER_LOWER='50% off installation plus a free design consult',
