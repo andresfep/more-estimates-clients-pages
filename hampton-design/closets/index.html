@@ -6,7 +6,7 @@
 <title>Hampton Design | Save Hundreds On Your Dream Custom Closet</title>
 <meta name="description" content="Limited-time closet event from Hampton Design: 50% off installation plus a free in-home design consultation. Answer 5 quick questions and book your free in-home estimate.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="page-version" content="2026-09-23.3">
+<meta name="page-version" content="2026-11-12.1">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -327,7 +327,7 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
           <h3>What's your ZIP code?</h3>
           <div class="progress"><i></i></div>
           <div class="stack">
-            <div class="field"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="23666"></div>
+            <div class="field"><label for="zip">ZIP code</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="85251"></div>
           </div>
           <div class="err" data-err></div>
           <button type="button" class="btn" data-next>Continue →</button>
@@ -372,7 +372,7 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
           </div>
           <div class="err" data-err></div>
           <button type="submit" class="btn" id="submitBtn">See If I Qualify →</button>
-          <p class="consent">By submitting, you agree Hampton Design may call or text you at the number provided about your project, including with automated technology. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+          <p class="consent">By submitting, you agree Hampton Design may call or text you at the number provided about your project, including with automated technology. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/closets/privacy/" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/closets/terms/" target="_blank" rel="noopener">Terms of Service</a>.</p>
           <button type="button" class="back" data-back>← Back</button>
         </div>
 
@@ -382,7 +382,7 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
           <h3>Great news, <span data-first>you</span> — you qualify!</h3>
           <p style="color:var(--muted);font-size:15px;margin-top:8px">Book your free in-home estimate now to redeem your <b>50% off installation</b> and <b>free design consult</b>.</p>
           <button type="button" class="btn" id="openCal" style="margin-top:18px">Book My Free In-Home Estimate →</button>
-          <p class="fine" style="margin-top:16px">Prefer to talk? <a href="tel:" data-cfg-href="phone"><b data-cfg="phoneDisplay">(555) 555-0123</b></a></p>
+          <p class="fine" style="margin-top:16px">Prefer to talk? <a href="tel:+16024235505" data-cfg-href="phone"><b data-cfg="phoneDisplay">(602) 423-5505</b></a></p>
         </div>
 
         <input type="hidden" name="space">
@@ -544,10 +544,10 @@ src="https://www.facebook.com/tr?id=911054096515670&ev=PageView&noscript=1"
       <span class="txt">Hampton<span>Design</span></span>
     </a>
     <div class="row"><span class="stars">★★★★★</span> <b style="color:#fff" data-cfg="rating">4.9</b> · Licensed &amp; Insured</div>
-    <div class="row">Proudly serving <span data-cfg="serviceArea">the Hampton Roads area</span></div>
-    <div class="row"><a href="tel:" data-cfg-href="phone" data-cfg="phoneDisplay">(555) 555-0123</a></div>
-    <div class="row"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></div>
-    <p class="legal">*50% off installation and free in-home design consultation valid with the purchase of a qualifying Hampton Design custom closet system. Offer valid for a limited time and cannot be combined with other offers. Offer not available in all areas. Reviews shown are representative. © <span id="year">2026</span> Hampton Design. All rights reserved. <span style="opacity:.5">Build 2026-09-23.3</span></p>
+    <div class="row">Proudly serving <span data-cfg="serviceArea">Arizona and surrounding areas</span></div>
+    <div class="row"><a href="tel:+16024235505" data-cfg-href="phone" data-cfg="phoneDisplay">(602) 423-5505</a></div>
+    <div class="row"><a href="/closets/privacy/">Privacy Policy</a> · <a href="/closets/terms/">Terms of Service</a></div>
+    <p class="legal">*50% off installation and free in-home design consultation valid with the purchase of a qualifying Hampton Design custom closet system. Offer valid for a limited time and cannot be combined with other offers. Offer not available in all areas. Reviews shown are representative. © <span id="year">2026</span> Hampton Design. All rights reserved. <span style="opacity:.5">Build 2026-11-12.1</span></p>
   </div>
 </footer>
 
@@ -573,10 +573,16 @@ const CONFIG = {
   // Default location. Overridden per visitor by ?location=Houston (or ?city=Houston) on the ad URL,
   // so one page serves every city: the offer pill reads "For Houston homeowners", the countdown
   // line reads "filling fast in Houston", and the lead posts with location="Houston".
-  city: "Hampton Roads",
-  serviceArea: "Hampton Roads, VA and surrounding areas",
-  phone: "+15555550123",                 // tel: link
-  phoneDisplay: "(555) 555-0123",
+  city: "Arizona",
+  serviceArea: "Arizona and surrounding areas",
+  phone: "+16024235505",                 // tel: link
+  phoneDisplay: "(602) 423-5505",
+  // Service-area check on the quiz's ZIP step. A ZIP outside the range, or on the excluded list,
+  // gets the out-of-area message and cannot go on, so no lead is created for it.
+  zipMin: 85001, zipMax: 86556,          // Arizona's ZIP codes
+  excludedZips: ["85140", "85326"],      // San Tan Valley and Buckeye: areas the client does not serve
+  // Opened once the visitor completes a booking in the calendar below.
+  thankYouUrl: "/closets/thank-you/",
   rating: "4.9",
   years: "10",
   // GoHighLevel / LeadConnector booking calendar. Quiz answers are appended as URL params
@@ -641,7 +647,13 @@ function showStep(n){
 
 /* Per-step validation: returns an error string or '' */
 const validators = {
-  2: () => /^\d{5}$/.test(quiz.zip.value.trim()) ? '' : 'Please enter a 5-digit ZIP code.',
+  2: () => {
+    const z = quiz.zip.value.trim();
+    if (!/^\d{5}$/.test(z)) return 'Please enter a 5-digit ZIP code.';
+    const inArea = +z >= CONFIG.zipMin && +z <= CONFIG.zipMax && !CONFIG.excludedZips.includes(z);
+    if (!inArea) track('zip_out_of_area', {});
+    return inArea ? '' : "Sorry, that ZIP code is outside our Arizona service area, so this offer isn't available there.";
+  },
   3: () => digitsOf(quiz.phone.value).length >= 10 ? '' : 'Please enter a valid 10-digit mobile number.',
   4: () => /^\S+@\S+\.\S+$/.test(quiz.email.value.trim()) ? '' : 'Please enter a valid email address.',
   5: () => quiz.full_name.value.trim().split(/\s+/).length >= 2 ? '' : 'Please enter both your first and last name.',
@@ -745,6 +757,17 @@ document.getElementById('closeModal').addEventListener('click', closeCalendar);
 modal.addEventListener('click', e => { if (e.target === modal) closeCalendar(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeCalendar(); });
 document.getElementById('openCal').addEventListener('click', () => openCalendar(leadData()));
+
+/* ---- Booking completed in the calendar → thank-you page ----
+   The GoHighLevel booking widget posts ["msgsndr-booking-complete", {...}] to this page when a booking is made. */
+window.addEventListener('message', e => {
+  let host = ''; try{ host = new URL(e.origin).hostname; }catch{}
+  if (!/(^|\.)(leadconnectorhq|msgsndr)\.com$/.test(host)) return;
+  if (!Array.isArray(e.data) || e.data[0] !== 'msgsndr-booking-complete' || !CONFIG.thankYouUrl) return;
+  track('booking_complete', {});
+  const first = (document.querySelector('[data-first]') || {}).textContent || '';
+  setTimeout(() => { location.href = CONFIG.thankYouUrl + (first && first !== 'you' ? '?name=' + encodeURIComponent(first) : ''); }, 1200);
+});
 
 quiz.addEventListener('submit', async e => {
   e.preventDefault();

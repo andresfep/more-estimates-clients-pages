@@ -29,6 +29,8 @@ CLI alternative: `npx wrangler pages deploy` from the repo root.
   calendar URL, GoHighLevel tracking/location IDs) live in the `CONFIG` object at the top of the `<script>` block.
   On the final quiz step the page sends a GoHighLevel form-tracking event (creates/updates the contact),
   then opens the prefilled booking calendar.
+- `hampton-design/closets/thank-you/`, `privacy/` and `terms/` — the page a visitor lands on after booking in the calendar
+  (the quiz page opens it when the GoHighLevel widget posts `msgsndr-booking-complete`), and the two policy pages the footer links.
 - `hampton-design/_headers` — cache and security headers served by Pages.
 - `hampton-design/_redirects` — `/` → `/closets`.
 - `hampton-design/robots.txt` — blocks crawlers (paid-traffic page).
